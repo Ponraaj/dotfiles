@@ -1,0 +1,9 @@
+font-family = "JetBrainsMono Nerd Font"
+font-size = 12
+theme = catppuccin-mocha
+shell-integration = zsh
+window-decoration = false
+cursor-style = block
+shell-integration-features = no-cursor
+cursor-style-blink = true
+confirm-close-surface = false

@@ -1,0 +1,29 @@
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 7
+
+[font.bold]
+style = "Bold"
+
+[font.bold_italic]
+style = "Bold Italic"
+
+[font.italic]
+style = "Italic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[window]
+dynamic_padding = true
+startup_mode = "Maximized"
+decorations = "None"
+
+[general]
+import = [
+  "~/.config/alacritty/themes/themes/catppuccin_mocha.toml",
+  # "~/.config/alacritty/themes/themes/one_dark.toml"
+]
