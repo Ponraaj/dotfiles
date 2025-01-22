@@ -17,6 +17,13 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
   pattern = { "*" },
 })
 
+vim.api.nvim_create_autocmd("BufRead,BufNewFile", {
+  pattern = "*.env",
+  callback = function()
+    vim.diagnostic.enable(false)
+  end,
+})
+
 -- Better auto-reload setup
 local auto_reload_group = vim.api.nvim_create_augroup("AutoReload", { clear = true })
 

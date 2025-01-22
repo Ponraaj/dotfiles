@@ -28,6 +28,7 @@ return {
       python = { "isort" },
       cpp = { "clang-format" },
       rust = { "rustfmt" },
+      sql = { "sqlfmt" },
     },
   },
 }

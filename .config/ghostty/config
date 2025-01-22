@@ -1,5 +1,5 @@
 font-family = "JetBrainsMono Nerd Font"
-font-size = 12
+font-size = 10
 theme = catppuccin-mocha
 shell-integration = zsh
 window-decoration = false

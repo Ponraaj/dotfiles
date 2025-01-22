@@ -31,6 +31,10 @@ exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 #Wallpaper
 exec_always feh --bg-scale ~/.config/wallpapers/cosmic_train.jpg
 
+bar {
+  status_command i3blocks
+}
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -67,7 +71,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec ghostty
 
 # kill focused window
 bindsym $mod+q kill
