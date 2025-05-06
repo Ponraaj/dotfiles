@@ -84,6 +84,13 @@ bindsym $mod+p exec --no-startup-id ~/.config/rofi/powermenu.sh
 
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
+# Startup Applications
+exec --no-startup-id i3-msg "workspace 2; exec alacritty"
+exec --no-startup-id sh -c 'sleep 0.25;i3-msg "workspace 1; exec brave"'
+# exec --no-startup-id sh -c 'sleep 0.5;i3-msg "workspace 4; exec com.rtosta.zapzap && sleep 2"'
+# exec --no-startup-id sh -c 'sleep 0.75;i3-msg "workspace 5; exec vesktop && sleep 5"'
+
+
 # Brightness
 bindsym F6 exec brightnessctl set 5%+
 bindsym F% exec brightnessctl set 5%-

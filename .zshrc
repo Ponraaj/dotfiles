@@ -51,6 +51,8 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 
+fpath+=~/.zfunc
+
 # Load completions
 autoload -Uz compinit && compinit
 
@@ -143,3 +145,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # cargo
 export PATH="$PATH:$HOME/.cargo/bin"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/ponraaj/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ponraaj/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/ponraaj/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ponraaj/google-cloud-sdk/completion.zsh.inc'; fi

@@ -4,4 +4,4 @@
 
 vim.opt.autoread = true
 vim.opt.updatetime = 250
-vim.g.loaded_clipboard_provider = 0
+vim.o.clipboard = "unnamedplus"
