@@ -27,6 +27,7 @@ return {
       lua = { "stylua" },
       python = { "isort" },
       cpp = { "clang-format" },
+      go = { "gofumpt" },
       rust = { "rustfmt" },
     },
   },

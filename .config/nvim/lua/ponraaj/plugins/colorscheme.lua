@@ -42,14 +42,6 @@ return {
         which_key = true,
         treesitter_context = true,
       },
-      highlight_overrides = {
-        all = function(cp)
-          return {
-            Normal = { bg = "NONE" },
-            NormalFloat = { bg = "NONE" },
-          }
-        end,
-      },
     },
     specs = {
       {

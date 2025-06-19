@@ -151,3 +151,10 @@ if [ -f '/home/ponraaj/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ponraaj/g
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/ponraaj/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ponraaj/google-cloud-sdk/completion.zsh.inc'; fi
+
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export OLLAMA_HOST=0.0.0.0
+

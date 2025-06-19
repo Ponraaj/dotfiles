@@ -15,11 +15,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins ={
-{"LazyVim/LazyVim",import = "lazyvim.plugins" },
+local plugins = {
+  { "LazyVim/LazyVim", import = "lazyvim.plugins" },
   { import = "ponraaj.plugins" },
 }
-require("lazy").setup(plugins,{
+
+require("lazy").setup(plugins, {
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
     -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.

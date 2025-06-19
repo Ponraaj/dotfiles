@@ -57,12 +57,6 @@ return {
     void yes() {{ cout<<"YES\n"; }}
     void no() {{ cout<<"NO\n"; }}
 
-    /*  All Required define Pre-Processors and typedef Constants */
-    typedef long int int32;
-    typedef unsigned long int uint32;
-    typedef long long int int64;
-    typedef unsigned long long int  uint64;
-
     /* clang-format on */
 
     /* Main()  function */
@@ -72,6 +66,11 @@ return {
     }}
     int main()
     {{
+
+        #ifndef ONLINE_JUDGE
+        freopen("input.txt", "r", stdin);
+        freopen("output.txt", "w", stdout);
+        #endif
 
         int tc;
         cin>>tc;
