@@ -1,18 +1,24 @@
 -- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
--- Markdown — In-buffer rendering/preview
+-- Navbuddy — navigation tree (navic companion)
 -- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 return {
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "md" },
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    opts = {
-      preset = 'obsidian',
-      file_types = { "markdown", "md" },
+    "SmiteshP/nvim-navbuddy",
+    cmd = "Navbuddy",
+    dependencies = {
+      "SmiteshP/nvim-navic",
+      "MunifTanjim/nui.nvim",
     },
-    config = function(_, opts)
-      require("render-markdown").setup(opts)
-    end,
+    opts = {
+      window = {
+        border = "rounded",
+        size = "60%",
+      },
+      lsp = { auto_attach = true },
+    },
+    keys = {
+      { "<leader>cn", "<cmd>Navbuddy<CR>", desc = "Navigation (Navbuddy)" },
+    },
   },
 }

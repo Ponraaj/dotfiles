@@ -1,0 +1,176 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Yazi Configuration - Modern Terminal File Manager
+# Theme: Catppuccin Mocha
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[manager]
+# Show hidden files by default
+show_hidden = false
+# Sort by modification time
+sort_by = "modified"
+sort_sensitive = false
+sort_reverse = true
+# Linemode
+linemode = "size"
+
+[preview]
+# Tab size
+tab_size = 2
+# Max file size to preview (in bytes)
+max_size = 1073741824  # 1GB
+# Image quality
+image_quality = 75
+
+[opener]
+# Open with default system opener
+open = [
+  { run = 'xdg-open "$@"', desc = "Open", for = "linux" },
+  { run = 'open "$@"', desc = "Open", for = "macos" },
+]
+# Edit with neovim
+edit = [
+  { run = 'nvim "$@"', desc = "Edit", block = true },
+]
+
+[open]
+# Rules for opening files
+rules = [
+  { name = "*.html", use = "open" },
+  { name = "*.pdf", use = "open" },
+  { name = "*.png", use = "open" },
+  { name = "*.jpg", use = "open" },
+  { name = "*.jpeg", use = "open" },
+  { name = "*.gif", use = "open" },
+  { name = "*.mp4", use = "open" },
+  { name = "*.mkv", use = "open" },
+  { name = "*.mp3", use = "open" },
+  { name = "*.zip", use = "open" },
+  { name = "*.tar.gz", use = "open" },
+]
+
+[[plugin.prepend_previewers]]
+name = "*.md"
+run = "markdown"
+
+# Catppuccin Mocha theme colors
+[theme]
+# Manager
+manager = { cwd = { fg = "#f5c2e7" }, hovered = { fg = "#1e1e2e", bg = "#89b4fa" }, preview_hovered = { underline = true } }
+
+# Mode
+mode_normal = { fg = "#1e1e2e", bg = "#89b4fa", bold = true }
+mode_select = { fg = "#1e1e2e", bg = "#a6e3a1", bold = true }
+mode_unset = { fg = "#1e1e2e", bg = "#f38ba8", bold = true }
+
+# Selection
+selection = { fg = "#f5e0dc", bg = "#45475a" }
+
+# Find
+find_keyword = { fg = "#f38ba8", italic = true }
+find_position = { fg = "#89b4fa", bg = "#313244", italic = true }
+
+# Marker
+marker_copied = { fg = "#a6e3a1", bg = "#a6e3a1" }
+marker_cut = { fg = "#f38ba8", bg = "#f38ba8" }
+marker_marked = { fg = "#f9e2af", bg = "#f9e2af" }
+marker_selected = { fg = "#89b4fa", bg = "#89b4fa" }
+
+# Tab
+tab_active = { fg = "#1e1e2e", bg = "#b4befe" }
+tab_inactive = { fg = "#cdd6f4", bg = "#45475a" }
+
+# Status
+status_separator = { fg = "#585b70", bg = "#585b70" }
+status_mode_normal = { fg = "#1e1e2e", bg = "#89b4fa" }
+status_mode_select = { fg = "#1e1e2e", bg = "#a6e3a1" }
+status_mode_unset = { fg = "#1e1e2e", bg = "#f38ba8" }
+
+# File types
+text = "#cdd6f4"
+image = "#f9e2af"
+video = "#f38ba8"
+audio = "#a6e3a1"
+document = "#89b4fa"
+compressed = "#cba6f7"
+executable = "#a6e3a1"
+
+# Icon colors
+icon_folder = "#89b4fa"
+icon_file = "#cdd6f4"
+icon_link = "#b4befe"
+
+# Border
+border_symbol = "│"
+border_style = { fg = "#585b70" }
+
+# Count
+count_copied = { fg = "#1e1e2e", bg = "#a6e3a1" }
+count_cut = { fg = "#1e1e2e", bg = "#f38ba8" }
+count_selected = { fg = "#1e1e2e", bg = "#89b4fa" }
+
+# Highlighting
+syntect_theme = "Catppuccin Mocha"
+
+[icon]
+# Use nerd font icons
+rules = [
+  # Folders
+  { name = "*/", text = "󰉋", fg = "#89b4fa" },
+  # Hidden
+  { name = ".*", text = "󰘓", fg = "#6c7086" },
+  # Git
+  { name = ".git*", text = "󰊢", fg = "#f38ba8" },
+  { name = ".gitignore", text = "󰊢", fg = "#f38ba8" },
+  # Config
+  { name = "*.toml", text = "󰰱", fg = "#fab387" },
+  { name = "*.yaml", text = "󰰱", fg = "#fab387" },
+  { name = "*.yml", text = "󰰱", fg = "#fab387" },
+  { name = "*.json", text = "󰘦", fg = "#f9e2af" },
+  # Scripts
+  { name = "*.sh", text = "󰆍", fg = "#a6e3a1" },
+  { name = "*.zsh", text = "󰆍", fg = "#a6e3a1" },
+  { name = "*.bash", text = "󰆍", fg = "#a6e3a1" },
+  # Python
+  { name = "*.py", text = "󰌠", fg = "#f9e2af" },
+  { name = "requirements*.txt", text = "󰌠", fg = "#f9e2af" },
+  # Rust
+  { name = "*.rs", text = "󱘗", fg = "#fab387" },
+  { name = "Cargo.toml", text = "󱘗", fg = "#fab387" },
+  # JavaScript/TypeScript
+  { name = "*.js", text = "󰌞", fg = "#f9e2af" },
+  { name = "*.ts", text = "󰛦", fg = "#89b4fa" },
+  { name = "*.jsx", text = "󰜈", fg = "#89b4fa" },
+  { name = "*.tsx", text = "󰜈", fg = "#89b4fa" },
+  { name = "package.json", text = "󰎙", fg = "#f38ba8" },
+  # Go
+  { name = "*.go", text = "󰟓", fg = "#89b4fa" },
+  # Markdown
+  { name = "*.md", text = "󰍔", fg = "#cdd6f4" },
+  { name = "README*", text = "󰋼", fg = "#f5e0dc" },
+  # Images
+  { name = "*.png", text = "󰋩", fg = "#cba6f7" },
+  { name = "*.jpg", text = "󰋩", fg = "#cba6f7" },
+  { name = "*.jpeg", text = "󰋩", fg = "#cba6f7" },
+  { name = "*.gif", text = "󰋩", fg = "#cba6f7" },
+  { name = "*.svg", text = "󰋩", fg = "#cba6f7" },
+  # Video
+  { name = "*.mp4", text = "󰨜", fg = "#f38ba8" },
+  { name = "*.mkv", text = "󰨜", fg = "#f38ba8" },
+  # Audio
+  { name = "*.mp3", text = "󰎆", fg = "#a6e3a1" },
+  { name = "*.wav", text = "󰎆", fg = "#a6e3a1" },
+  # Archives
+  { name = "*.zip", text = "󰗄", fg = "#fab387" },
+  { name = "*.tar.gz", text = "󰗄", fg = "#fab387" },
+  { name = "*.tar.xz", text = "󰗄", fg = "#fab387" },
+  { name = "*.rar", text = "󰗄", fg = "#fab387" },
+  # Documents
+  { name = "*.pdf", text = "󰈦", fg = "#f38ba8" },
+  { name = "*.doc*", text = "󰈬", fg = "#89b4fa" },
+  { name = "*.xls*", text = "󰈛", fg = "#a6e3a1" },
+  # Lock files
+  { name = "package-lock.json", text = "󰌷", fg = "#6c7086" },
+  { name = "yarn.lock", text = "󰌷", fg = "#6c7086" },
+  { name = "Cargo.lock", text = "󰌷", fg = "#6c7086" },
+  { name = "*.lock", text = "󰌷", fg = "#6c7086" },
+]

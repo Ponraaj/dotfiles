@@ -1,0 +1,47 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Sesh Configuration (Catppuccin + keyboard-centric defaults)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+blacklist = [
+  "node_modules",
+  ".git",
+  ".cache",
+  ".local",
+  ".cargo",
+  ".rustup",
+  ".npm",
+  ".pnpm-store",
+  "Downloads",
+  "tmp",
+]
+
+dir_length = 2
+
+sort_order = [
+  "config",
+  "tmux",
+  "tmuxinator",
+  "zoxide",
+]
+
+[default_session]
+startup_command = "nvim"
+preview_command = "eza --all --git --icons --color=always {}"
+
+[[session]]
+name = "dotfiles"
+path = "~/dotfiles"
+startup_command = "nvim"
+preview_command = "eza --all --git --icons --color=always {}"
+
+[[session]]
+name = "config"
+path = "~/.config"
+startup_command = "nvim"
+preview_command = "eza --all --git --icons --color=always {}"
+
+[[session]]
+name = "home"
+path = "~"
+startup_command = "nvim"
+preview_command = "eza --all --git --icons --color=always {}"

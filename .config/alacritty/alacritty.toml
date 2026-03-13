@@ -1,9 +1,9 @@
 [env]
-WINIT_X11_SCALE_FACTOR = "1.0"
+# WINIT_X11_SCALE_FACTOR is deprecated in newer versions
 TERM = "xterm-256color"
 
 [font]
-size = 10
+size = 15
 
 [font.bold]
 style = "Bold"
@@ -26,6 +26,12 @@ decorations = "None"
 opacity = 0.5
 blur = true
 
+[scrolling]
+# Large scrollback buffer (100k lines)
+history = 100000
+# Multiplier for scrolling speed
+multiplier = 3
+
 [cursor]
 vi_mode_style = { shape = "Block", blinking = "Off" }
 
@@ -35,3 +41,131 @@ import = [
   # "~/.config/alacritty/themes/themes/one_dark.toml"
 ]
 live_config_reload = true
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Keyboard-Centric Copy/Paste & Selection
+# No mouse required!
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# ── Vi Mode (Copy/Selection Mode) ────────────────────────────
+# Enter Vi Mode: Ctrl+Shift+Space
+# Then use vim keys: h/j/k/l to move, v to select, y to copy
+# Exit: q or Escape
+
+[[keyboard.bindings]]
+key = "Space"
+mods = "Control|Shift"
+action = "ToggleViMode"
+
+# ── Vi Mode Scrolling (Fixed!) ──────────────────────────────
+# NOTE: In vi mode, use these keys to SCROLL the viewport:
+
+[[keyboard.bindings]]
+key = "K"
+mode = "Vi"
+action = "ScrollLineUp"
+
+[[keyboard.bindings]]
+key = "J"
+mode = "Vi"
+action = "ScrollLineDown"
+
+[[keyboard.bindings]]
+key = "U"
+mode = "Vi"
+action = "ScrollHalfPageUp"
+
+[[keyboard.bindings]]
+key = "D"
+mode = "Vi"
+action = "ScrollHalfPageDown"
+
+[[keyboard.bindings]]
+key = "B"
+mode = "Vi"
+action = "ScrollPageUp"
+
+[[keyboard.bindings]]
+key = "F"
+mode = "Vi"
+action = "ScrollPageDown"
+
+[[keyboard.bindings]]
+key = "G"
+mode = "Vi"
+action = "ScrollToBottom"
+
+[[keyboard.bindings]]
+key = "G"
+mods = "Shift"
+mode = "Vi"
+action = "ScrollToTop"
+
+# Search in scrollback
+[[keyboard.bindings]]
+key = "/"
+mode = "Vi"
+action = "SearchForward"
+
+[[keyboard.bindings]]
+key = "N"
+mode = "Vi"
+action = "SearchNext"
+
+[[keyboard.bindings]]
+key = "N"
+mods = "Shift"
+mode = "Vi"
+action = "SearchPrevious"
+
+# ── Vi Mode Selection ───────────────────────────────────────
+[[keyboard.bindings]]
+key = "V"
+mode = "Vi"
+action = "ToggleNormalSelection"
+
+[[keyboard.bindings]]
+key = "V"
+mods = "Shift"
+mode = "Vi"
+action = "ToggleLineSelection"
+
+[[keyboard.bindings]]
+key = "V"
+mods = "Control"
+mode = "Vi"
+action = "ToggleBlockSelection"
+
+# ── Vi Mode Copy ────────────────────────────────────────────
+[[keyboard.bindings]]
+key = "Y"
+mode = "Vi"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "Y"
+mods = "Shift"
+mode = "Vi"
+action = "CopySelection"
+
+# ── Quick Copy/Paste (Normal Mode) ──────────────────────────
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+action = "Copy"
+
+[[keyboard.bindings]]
+key = "V"
+mods = "Control|Shift"
+action = "Paste"
+
+# ── Exit Vi Mode ────────────────────────────────────────────
+[[keyboard.bindings]]
+key = "Q"
+mode = "Vi"
+action = "ClearSelection"
+
+[[keyboard.bindings]]
+key = "Escape"
+mode = "Vi"
+action = "ClearSelection"

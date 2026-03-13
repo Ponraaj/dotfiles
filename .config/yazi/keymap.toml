@@ -1,0 +1,159 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Yazi Keybindings - Vim-style Navigation
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[[manager.prepend_keymap]]
+# Open file
+on = ["<Enter>"]
+run = "open"
+desc = "Open selected file"
+
+# Quit
+[[manager.prepend_keymap]]
+on = ["q"]
+run = "quit"
+desc = "Quit yazi"
+
+# Go to home directory
+[[manager.prepend_keymap]]
+on = ["g", "h"]
+run = "cd ~"
+desc = "Go to home"
+
+# Go to config directory
+[[manager.prepend_keymap]]
+on = ["g", "c"]
+run = "cd ~/.config"
+desc = "Go to config"
+
+# Go to root
+[[manager.prepend_keymap]]
+on = ["g", "r"]
+run = "cd /"
+desc = "Go to root"
+
+# Toggle hidden files
+[[manager.prepend_keymap]]
+on = ["."]
+run = "toggle_hidden"
+desc = "Toggle hidden files"
+
+# Create file
+[[manager.prepend_keymap]]
+on = ["a"]
+run = "create"
+desc = "Create file"
+
+# Rename
+[[manager.prepend_keymap]]
+on = ["r"]
+run = "rename"
+desc = "Rename file"
+
+# Delete
+[[manager.prepend_keymap]]
+on = ["d"]
+run = "remove"
+desc = "Delete file"
+
+# Copy
+[[manager.prepend_keymap]]
+on = ["y"]
+run = "yank"
+desc = "Copy file"
+
+# Cut
+[[manager.prepend_keymap]]
+on = ["x"]
+run = "cut"
+desc = "Cut file"
+
+# Paste
+[[manager.prepend_keymap]]
+on = ["p"]
+run = "paste"
+desc = "Paste file"
+
+# Select all
+[[manager.prepend_keymap]]
+on = ["V"]
+run = "select_all"
+desc = "Select all"
+
+# Inverse selection
+[[manager.prepend_keymap]]
+on = ["v"]
+run = "select_all --state=none"
+desc = "Inverse selection"
+
+# Search
+[[manager.prepend_keymap]]
+on = ["/"]
+run = "find"
+desc = "Search"
+
+# Search next
+[[manager.prepend_keymap]]
+on = ["n"]
+run = "find_arrow --previous"
+desc = "Previous search result"
+
+# Search previous
+[[manager.prepend_keymap]]
+on = ["N"]
+run = "find_arrow --next"
+desc = "Next search result"
+
+# Filter
+[[manager.prepend_keymap]]
+on = ["f"]
+run = "filter"
+desc = "Filter"
+
+# Sort
+[[manager.prepend_keymap]]
+on = ["s"]
+run = "sort"
+desc = "Sort"
+
+# Tab create
+[[manager.prepend_keymap]]
+on = ["t"]
+run = "tab_create"
+desc = "New tab"
+
+# Tab close
+[[manager.prepend_keymap]]
+on = ["T"]
+run = "tab_close"
+desc = "Close tab"
+
+# Tab next
+[[manager.prepend_keymap]]
+on = ["]"]
+run = "tab_next"
+desc = "Next tab"
+
+# Tab previous
+[[manager.prepend_keymap]]
+on = ["["]
+run = "tab_prev"
+desc = "Previous tab"
+
+# Jump to directory via fzf
+[[manager.prepend_keymap]]
+on = ["z"]
+run = "shell 'cd $(fd --type d | fzf)' --confirm"
+desc = "Jump to directory (fzf)"
+
+# Open in nvim
+[[manager.prepend_keymap]]
+on = ["e"]
+run = "shell 'nvim \"$1\"' --confirm"
+desc = "Open in nvim"
+
+# Open terminal in current directory
+[[manager.prepend_keymap]]
+on = ["!"]
+run = "shell '$SHELL' --block"
+desc = "Open terminal here"
