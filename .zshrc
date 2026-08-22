@@ -804,3 +804,23 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 typeset -U PATH
 
 . "$HOME/.moon/bin/env"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
+
+# kimi-code
+export PATH="/home/ponraaj/.kimi-code/bin:$PATH"
+
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"
+
+# Turso
+export PATH="$PATH:/home/ponraaj/.turso"
+
+# load local secrets (keys live in ~/.secrets, never commit)
+if [ -f ~/.secrets/opencode-go.env ]; then
+  set -a; source ~/.secrets/opencode-go.env; set +a
+fi

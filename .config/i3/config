@@ -27,13 +27,15 @@ gaps inner 2
 #picom
 exec --no-startup-id picom
 
-#Polybar
-exec_always killall polybar
+# Display setup
+exec_always --no-startup-id ~/.config/i3/setup-displays.sh
+
+# Polybar
 exec_always --no-startup-id ~/.config/polybar/launch_polybar.sh
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 #Wallpaper
-exec_always feh --bg-scale ~/.config/wallpapers/sword.png
+exec_always feh --bg-fill ~/.config/wallpapers/ascii-space.png
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -163,6 +165,14 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# Assign workspaces to specific outputs when external monitor is connected
+workspace "1" output HDMI-0
+workspace "2" output HDMI-0
+workspace "3" output HDMI-0
+workspace "4" output eDP-1-1
+workspace "5" output eDP-1-1
+workspace "6" output eDP-1-1
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -207,6 +217,9 @@ bindsym F1 exec --no-startup-id
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+# toggle display mode (lid closed/open)
+bindsym $mod+Shift+o exec ~/.config/i3/setup-displays.sh
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 

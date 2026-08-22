@@ -9,6 +9,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("ponraaj-lsp-attach", { clear = true }),
   callback = function(event)
     local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+    -- Some configs may pass a root_dir callback into vim.lsp.start().
+    -- Normalize to a string path so :checkhealth/:LspInfo does not error.
+    if client and type(client.root_dir) == "function" then
+      local filename = vim.api.nvim_buf_get_name(event.buf)
+      if filename ~= "" then
+        client.root_dir = vim.fs.root(filename, { ".git", ".hg", ".svn", "Cargo.toml", "go.mod", "package.json" })
+      end
+    end
+
     local map = function(keys, func, desc)
       vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
     end
@@ -105,7 +115,7 @@ vim.lsp.config("*", {
     local root = get_root_dir(fname)
     if root then
       for _, existing_client in ipairs(vim.lsp.get_clients()) do
-        if existing_client.name == client.name and existing_client.config.root_dir == root then
+        if existing_client.name == client.name and existing_client.root_dir == root then
           return true
         end
       end
@@ -173,11 +183,27 @@ vim.lsp.config("clangd", {
   root_markers = { ".clangd", ".clang-tidy", ".clang-format", "compile_commands.json", "compile_flags.txt" },
 })
 
--- ── TypeScript / JavaScript ─────────────────────────────────
-vim.lsp.config("ts_ls", {
-  cmd = { "typescript-language-server", "--stdio" },
+-- ── TypeScript / JavaScript (using vtsls for Effect LSP support) ─
+vim.lsp.config("vtsls", {
+  cmd = { "vtsls", "--stdio" },
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
+  settings = {
+    vtsls = {
+      autoUseWorkspaceTsdk = true,
+    },
+    typescript = {
+      tsserver = {
+        globalPlugins = {
+          {
+            name = "@effect/language-service",
+            location = "./node_modules/@effect/language-service",
+            enableForWorkspaceTypeScriptVersions = true,
+          },
+        },
+      },
+    },
+  },
 })
 
 -- ── Python ──────────────────────────────────────────────────
@@ -249,7 +275,7 @@ local lsp_servers = {
   "lua_ls",
   "gopls",
   "clangd",
-  "ts_ls",
+  "vtsls",
   "basedpyright",
   "rust_analyzer",
   "jsonls",
@@ -259,8 +285,14 @@ local lsp_servers = {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   callback = function(args)
+    local filename = vim.api.nvim_buf_get_name(args.buf)
+    if filename == "" then return end
+
     local ft = vim.bo[args.buf].filetype
     if not ft or ft == "" then return end
+
+    local root_dir = get_root_dir(filename)
+    if not root_dir then return end
 
     for _, server_name in ipairs(lsp_servers) do
       local config = vim.lsp.config[server_name]
@@ -268,7 +300,10 @@ vim.api.nvim_create_autocmd("FileType", {
         -- Check if not already attached
         local clients = vim.lsp.get_clients({ bufnr = args.buf, name = server_name })
         if #clients == 0 then
-          vim.lsp.start(config, { bufnr = args.buf })
+          local start_config = vim.tbl_deep_extend("force", {}, config, {
+            root_dir = root_dir,
+          })
+          vim.lsp.start(start_config, { bufnr = args.buf })
         end
       end
     end

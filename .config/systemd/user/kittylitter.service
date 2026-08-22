@@ -1,0 +1,14 @@
+[Unit]
+Description=Alleycat bridge daemon
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/ponraaj/.nvm/versions/node/v24.9.0/lib/node_modules/kittylitter/node_modules/.bin_real/kittylitter serve
+Environment="PATH=/home/ponraaj/.kimi-code/bin:/home/ponraaj/.grok/bin:/home/ponraaj/.moon/bin:/home/ponraaj/.fly/bin:/home/ponraaj/.opencode/bin:/home/ponraaj/google-cloud-sdk/bin:/home/ponraaj/.bun/bin:/home/ponraaj/.local/bin:/home/ponraaj/.local/share/pnpm:/home/ponraaj/.nvm/versions/node/v24.9.0/bin:/home/ponraaj/.local/share/zinit/polaris/bin:/home/ponraaj/go/bin:/home/ponraaj/.nix-profile/bin:/nix/var/nix/profiles/default/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/share/dotnet:/home/ponraaj/.dotnet/tools:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin:/home/ponraaj/.cargo/bin:/home/ponraaj/Android/Sdk/emulator:/home/ponraaj/Android/Sdk/platform-tools"
+Environment="SHELL=/usr/bin/zsh"
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

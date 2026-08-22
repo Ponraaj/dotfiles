@@ -16,8 +16,13 @@ return {
     },
   },
 
-  -- ── LSP configs (required by mason-lspconfig) ─────────────
-  -- Provides server configs on runtimepath; we still use vim.lsp.config
+  -- ── TypeScript LSP (vtsls for Effect language service support) ────
+  {
+    "yioneko/nvim-vtsls",
+    lazy = false,
+  },
+
+  -- ── LSP configs (required by mason-lspconfig and nvim-vtsls) ─────────
   {
     "neovim/nvim-lspconfig",
     lazy = false,
@@ -59,7 +64,7 @@ return {
         "lua_ls",
         "gopls",
         "clangd",
-        "ts_ls",
+        "vtsls",
         "basedpyright",
         "ruff",
         "rust_analyzer",

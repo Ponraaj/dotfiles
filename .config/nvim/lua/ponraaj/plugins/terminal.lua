@@ -110,8 +110,6 @@ return {
     keys = {
       -- Default toggle (uses setup direction - vertical)
       { "<C-\\>", "<cmd>ToggleTerm<CR>", desc = "Toggle terminal", mode = { "n", "i" } },
-      -- Horizontal terminal toggle (bottom) with Ctrl+/
-      { "<C-/>", "<cmd>ToggleTerm direction=horizontal<CR>", desc = "Toggle terminal (bottom)", mode = { "n", "i", "t" } },
       -- Direction-specific toggles
       { "<leader>tv", "<cmd>ToggleTerm direction=vertical<CR>", desc = "Terminal vertical split", mode = { "n" } },
       { "<leader>tV", "<cmd>ToggleTerm direction=vertical size=60<CR>", desc = "Terminal vertical split (wide)", mode = { "n" } },

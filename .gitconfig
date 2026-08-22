@@ -1,0 +1,90 @@
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[user]
+	name = Ponraaj
+	email = ponraajvetrivel@gmail.com
+	signingkey = 716972A7B3128B9DB2B8BFABCE3E2293A8524C22
+[init]
+	defaultBranch = master
+[pull]
+	rebase = true
+[commit]
+	gpgsign = true
+
+# Better diffs with delta (install: sudo pacman -S git-delta)
+[core]
+	pager = less
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	light = false
+	line-numbers = true
+	side-by-side = false
+	features = catppuccin-mocha
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
+
+# Delta Catppuccin Mocha theme
+[delta "catppuccin-mocha"]
+	commit-decoration-style = box ul
+	file-style = bold white
+	file-decoration-style = none
+	hunk-header-decoration-style = catppuccin-mocha-box
+	hunk-header-file-style = catppuccin-mocha-file
+	hunk-header-line-number-style = catppuccin-mocha-line-number
+	hunk-header-style = file line-number syntax
+	minus-emph-style = syntax catppuccin-mocha-red-emph
+	minus-style = syntax catppuccin-mocha-red
+	plus-emph-style = syntax catppuccin-mocha-green-emph
+	plus-style = syntax catppuccin-mocha-green
+	map-styles = \
+		bold purple => syntax catppuccin-mocha-purple, \
+		bold blue => syntax catppuccin-mocha-blue, \
+		bold cyan => syntax catppuccin-mocha-teal, \
+		bold yellow => syntax catppuccin-mocha-yellow
+	zero-style = syntax
+	blame-code-style = syntax
+	blame-format = {author:<18} ({commit:>7}) {timestamp:<13} 
+	blame-palette = catppuccin-mocha-surface0 catppuccin-mocha-surface1 catppuccin-mocha-surface2
+
+catppuccin-mocha-box = #585b70
+	catppuccin-mocha-file = #89b4fa
+	catppuccin-mocha-line-number = #b4befe
+	catppuccin-mocha-red-emph = #f38ba8
+	catppuccin-mocha-red = #45475a
+	catppuccin-mocha-green-emph = #a6e3a1
+	catppuccin-mocha-green = #45475a
+	catppuccin-mocha-purple = #cba6f7
+	catppuccin-mocha-blue = #89b4fa
+	catppuccin-mocha-teal = #94e2d5
+	catppuccin-mocha-yellow = #f9e2af
+	catppuccin-mocha-surface0 = #313244
+	catppuccin-mocha-surface1 = #45475a
+	catppuccin-mocha-surface2 = #585b70
+
+# Aliases
+[alias]
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	cim = commit -m
+	di = diff
+	dis = diff --staged
+	lo = log --oneline --graph -10
+	last = log -1 HEAD
+	unstage = reset HEAD --
+	discard = checkout --
+	undo = reset --soft HEAD~
+	amend = commit --amend
+	wip = !git add -A && git commit -m "WIP"
+	pop = stash pop
+	ss = stash save
+	sl = stash list
